@@ -1,3 +1,4 @@
+# https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks
 class Pilha():
     def __init__(self):
         self.data = []

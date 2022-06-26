@@ -1,0 +1,19 @@
+class tagParser(HTMLParser):
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.indentation = 0
+        
+    def handle_starttag(self, tag, attrs):
+        print("\t" * self.indentation, tag, "start")
+        self.indentation += 1
+    
+    def handle_endtag(self, tag):
+        self.indentation -= 1
+        print("\t" * self.indentation, tag, "end")
+                
+r = urlopen("http://www.w3c.org/Consortium/facts.html") # type(r) == <class 'http.client.HTTPResponse'>
+html = r.read()
+html = html.decode()
+
+parser = tagParser()
+parser.feed(html)
